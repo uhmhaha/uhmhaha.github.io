@@ -1,0 +1,209 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+  <id>frs-20</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <fileSets>
+  
+    <!-- copy bat files to [bin] folder -->
+    <fileSet>
+      <directory>${basedir}/bin</directory>
+      <outputDirectory>/bin</outputDirectory>
+      <includes>
+        <include>*.bat</include>
+        <include>*.exe</include>
+        <include>*.cmd</include>
+      </includes>
+    </fileSet>
+    
+    <!-- copy configuration files to [conf] folder -->
+    <fileSet>
+      <directory>${basedir}/conf</directory>
+      <outputDirectory>/conf</outputDirectory>
+      <includes>
+        <include>*.properties</include>
+        <include>*.xml</include>
+        <include>*.conf</include>
+      </includes>
+      <excludes>
+      	<exclude>logback-test.xml</exclude>
+      </excludes>
+    </fileSet>
+    
+    <!--  copy all dependent jar files to [lib] folder -->
+    <fileSet>
+      <directory>${project.build.directory}/lib</directory>
+      <outputDirectory>/lib</outputDirectory>
+      <includes>
+        <include>*.jar</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy this jar file(vas_frs_cluster_64-2.0.0-SNAPSHOT.jar) to [lib] folder -->
+    <fileSet>
+      <directory>${project.build.directory}</directory>
+      <outputDirectory>/lib</outputDirectory>
+      <includes>
+        <include>${project.build.finalName}.${project.packaging}</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy Hbinno dlls to [3rdparty/hbinno] folder -->
+    <fileSet>
+      <directory>${basedir}/../VAS_ADAPTER_FR_HBINNO/lib/x64</directory>
+      <outputDirectory>/3rdparty/hbinno</outputDirectory>
+      <includes>
+        <include>*.dll</include>
+      </includes>
+    </fileSet>
+
+    
+    <!--  copy incon adapter dll(vms_triumi_adapter_jni.dll) to [3rdpaty/incon] folder -->
+    <fileSet>
+      <directory>${basedir}/../VAS_ADAPTER_VMS_INCON/lib/jni/x64</directory>
+      <outputDirectory>/3rdparty/incon</outputDirectory>
+      <includes>
+        <include>*.dll</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy incon dlls to [3rdpaty/incon] folder -->
+    <fileSet>
+      <directory>${basedir}/../VAS_ADAPTER_VMS_INCON/lib/triumi-1.13/x64</directory>
+      <outputDirectory>/3rdparty/incon</outputDirectory>
+      <includes>
+        <include>*.dll</include>
+      </includes>
+    </fileSet>
+
+    <fileSet>
+      <directory>${basedir}/../VAS_ADAPTER_VMS_INCON/lib/triumi-1.13/x64/x64</directory>
+      <outputDirectory>/3rdparty/incon/x64</outputDirectory>
+      <includes>
+        <include>*.dll</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy sparser dlls to [3rdpaty/sparser] folder -->
+    <fileSet>
+      <directory>${basedir}/../VAS_ADAPTER_VIDEO_SPARSER/lib/x64</directory>
+      <outputDirectory>/3rdparty/sparser</outputDirectory>
+      <includes>
+        <include>*.dll</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy log4cplus to [3rdpaty/log4cplus] folder -->
+    <fileSet>
+      <directory>${basedir}/../VAS_ADAPTER_VMS_INCON/lib/log4cplus/x64</directory>
+      <outputDirectory>/3rdparty/log4cplus</outputDirectory>
+      <includes>
+        <include>*.dll</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy db mssql script files to [db_script] folder -->
+    <fileSet>
+      <directory>${basedir}/db_script/mssql/20</directory>
+      <outputDirectory>/db_script/mssql/20</outputDirectory>
+      <includes>
+        <include>*.sql</include>
+      </includes>
+    </fileSet>
+    
+    <fileSet>
+      <directory>${basedir}/db_script/mssql/30</directory>
+      <outputDirectory>/db_script/mssql/30</outputDirectory>
+      <includes>
+        <include>*.sql</include>
+      </includes>
+    </fileSet>
+    
+    <fileSet>
+      <directory>${basedir}/db_script/mssql/sample</directory>
+      <outputDirectory>/db_script/mssql/sample</outputDirectory>
+      <includes>
+        <include>*.sql</include>
+      </includes>
+    </fileSet>
+    
+    
+    <!--  copy FRS UI db mssql script files to [db_script] folder -->
+    <fileSet>
+      <directory>${basedir}/db_script/mssql/ui</directory>
+      <outputDirectory>/db_script/mssql/ui</outputDirectory>
+      <includes>
+        <include>*.sql</include>
+      </includes>
+    </fileSet>
+    
+    
+    <!--  copy mongodb script files to [db_script] folder -->
+    <fileSet>
+      <directory>${basedir}/db_script/mongodb</directory>
+      <outputDirectory>/db_script/mongodb</outputDirectory>
+      <includes>
+        <include>*.bat</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy mongodb script files to [db_script] folder -->
+    <fileSet>
+      <directory>${basedir}/db_script/mongodb/nosql</directory>
+      <outputDirectory>/db_script/mongodb/nosql</outputDirectory>
+      <includes>
+        <include>*.bson</include>
+        <include>*.json</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy visual studio package files to [vs_package] folder -->
+    <fileSet>
+      <directory>${basedir}/vs_package</directory>
+      <outputDirectory>/vs_package</outputDirectory>
+      <includes>
+        <include>*.exe</include>
+      </includes>
+    </fileSet>
+    
+    <!--  copy util files to [util] folder -->
+    <fileSet>
+      <directory>${basedir}/util/hbinno</directory>
+      <outputDirectory>/util/hbinno</outputDirectory>
+      <includes>
+        <include>*.*</include>
+      </includes>
+    </fileSet>
+
+    <!--  copy util files to [util] folder -->
+    <fileSet>
+      <directory>${basedir}/util/service_manager</directory>
+      <outputDirectory>/util/service_manager</outputDirectory>
+      <includes>
+        <include>*.*</include>
+      </includes>
+    </fileSet>
+    
+    <!--  make [log] folder -->
+    <fileSet>
+      <directory>${basedir}/log</directory>
+      <outputDirectory>/log/jvm</outputDirectory>
+      <excludes>
+      	<exclude>*.log</exclude>
+      </excludes>
+    </fileSet>
+    
+    <!-- license  -->
+    <fileSet>
+      <directory>${basedir}/license</directory>
+      <outputDirectory>/</outputDirectory>
+      <includes>
+      	<include>*.pdf</include>
+      </includes>
+    </fileSet>
+    
+    
+  </fileSets>
+</assembly>
