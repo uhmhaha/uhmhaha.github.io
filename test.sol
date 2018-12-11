@@ -1,6 +1,13 @@
 pragma solidity 0.4.24;
 
 contract EventTickets {
+
+    uint public thisIsBalance = 0;
+    bool public releaseEther = false;
+    event CanPurchase(bool canPurchase);
+    address public venueOwner;
+
+    mapping(address => uint) shares;
     
     struct Buyer {
         string buyerName;
@@ -11,28 +18,27 @@ contract EventTickets {
         uint costPerTicket;
         string description;
         string webSite;
-        mapping(address => Buyer) buyers;
+        mapping(string => Buyer) buyers;
+        string[] buyersAccts;
 
     }
     
-    uint public thisIsBalance = 0;
     mapping(address => Ticket) tickets;
     address[] public eventAccts;
-    address[] public buyersAccts;
 
     function createEvent( uint cost, string des, string web, string nam, uint qua) public payable{
         
         var ticket = tickets[msg.sender];
-        var buyer = Ticket.buyers[msg.sender];
+        var buyer = ticket.buyers[nam];
         
         ticket.costPerTicket = cost;
-        //ticket.buyers = msg.sender;
         ticket.description = des;
         ticket.webSite = web;
         
         buyer.buyerName = nam;
         buyer.ticketQuantity = qua;
         
+        ticket.buyersAccts.push(nam) -1;
         eventAccts.push(msg.sender) -1;
     }
     
@@ -40,37 +46,36 @@ contract EventTickets {
          return eventAccts;
     }
     
-    function getEvent() view public returns(uint, string, string){
-      return (tickets[msg.sender].costPerTicket, tickets[msg.sender].description, tickets[msg.sender].webSite, tickets[msg.sender].buyers[msg.sender].buyerName, tickets[msg.sender].buyers[msg.sender].ticketQuantity);
+    function getEvent(string name) view public returns(uint, string, string, string, uint){
+      return (tickets[msg.sender].costPerTicket, tickets[msg.sender].description, tickets[msg.sender].webSite, tickets[msg.sender].buyers[name].buyerName, tickets[msg.sender].buyers[name].ticketQuantity);
     }
     
-    // function getEvent() view public returns(uint, string, string){
-    //     return (myTicket.ticketQuantity, myTicket.description, myTicket.webSite);
-    // }
-    
-    // function countTickets() view public returns(uint){
-    //     return eventAccts.length;
-    // }
-    
-    // function buyTicket(address _add, uint q) public payable {
-    //     require(tickets[_add].ticketQuantity > q);
-    //     thisIsBalance += tickets[_add].ticketQuantity * q;
-    //     tickets[_add].ticketQuantity -= q;
-    // }
-    function buyTicket(uint q) public payable {
-        require(myTicket.ticketQuantity > q);
-        thisIsBalance += myTicket.ticketQuantity * q;
-        myTicket.ticketQuantity -= q;
+    function buyTicket( string name, uint q) public payable {
+        require(tickets[msg.sender].buyers[name].ticketQuantity > q);
+        thisIsBalance += tickets[msg.sender].buyers[name].ticketQuantity * q;
+        tickets[msg.sender].buyers[name].ticketQuantity -= q;
+    }
+
+    function refund(string name,uint q) public payable {
+        require(thisIsBalance >= tickets[msg.sender].buyers[name].ticketQuantity * q);
+        thisIsBalance += tickets[msg.sender].buyers[name].ticketQuantity * q;
+        tickets[msg.sender].buyers[name].ticketQuantity += q;
+        
+        if(msg.sender.call.value(shares[msg.sender])())
+            shares[msg.sender] = 0;
+        
     }
     
-    // function refund(address _add, uint q) public payable {
-    //     require(thisIsBalance >= tickets[_add].ticketQuantity * q);
-    //     thisIsBalance += tickets[_add].ticketQuantity * q;
-    //     tickets[_add].ticketQuantity += q;
-    // }
-    function refund( uint q) public payable {
-        require(thisIsBalance >= myTicket.ticketQuantity * q);
-        thisIsBalance += myTicket.ticketQuantity * q;
-        myTicket.ticketQuantity += q;
+    //use onlyOwner and check event( idont know what it means )
+    function allowPurchase() onlyOwner {
+        releaseEther = true;
+        CanPurchase(releaseEther);
     }
+    
+    //check is 0
+    modifier onlyOwner(){
+        require(tickets[msg.sender].costPerTicket == 0);
+        _;
+    }
+
 }
