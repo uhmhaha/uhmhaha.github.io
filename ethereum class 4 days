@@ -13,3 +13,10 @@ test Account를 생성해준다. ( ? 아마 다른 블록체인에도 연결할 
 create contract가 된다. 
 (?  metamask로 자동연동되는 것이 궁금하다.)
 
+TRUFFLE INIT은 간단한 프로젝트 코드 템플릿을 생성해준다
+
+* TRUFFLE COMPILE - SMART CONTRACT COMPILE TO 
+* MIGRATION - GRU SMART CONTRACT를 특정 NETWORK에 DEPLOY하는
+
+5일차 교육정리
+
