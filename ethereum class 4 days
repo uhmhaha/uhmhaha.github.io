@@ -28,4 +28,6 @@ RPC를 위해서는 결국 WEB3.JS를 사용할 수 밖에
 
 1. GANASH와 METAMASK 가문제가 생겼을 때..
  : METAMAST를 RESET ACCOUNT 후 가니쉬를 재기동하면... ( 버그다..곧 고쳐질꺼다.)
+ 
+ 2. child contract를 접근하는 web3.eth....at(하위contract주소)
 
