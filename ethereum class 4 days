@@ -11,12 +11,16 @@ test Account를 생성해준다. ( ? 아마 다른 블록체인에도 연결할 
 그래서 오늘 실습은 remix에서 transaction을 실행시키는데 그 타겟은 Ganache로 타겟한다.
 근데 environment를 indected Web3로 설정해서 deploy를 하면 이상하게 내가 아까 메타마스크지갑에 입력한 계좌로 연동되어 gas가 소모되면서
 create contract가 된다. 
-(?  metamask로 자동연동되는 것이 궁금하다.)
+(?  metamask로 자동연동되는 것이 궁금하다.
+!연결고리이해!!! 하나의 웹브라우저에서는 WEB3.JS를 CALL할 것이기 때문에, 하지만 그것은 하나의 WEB3 를 공유하기때문에 결국 METAMASK와 연동이 가능하게되는 것, 
+즉, REMIX에서 컴파일하면 자동으로WEB3와 연동이 됨.. 세션이 다르면??)
 
 TRUFFLE INIT은 간단한 프로젝트 코드 템플릿을 생성해준다
 
 * TRUFFLE COMPILE - SMART CONTRACT COMPILE TO 
 * MIGRATION - GRU SMART CONTRACT를 특정 NETWORK에 DEPLOY하는
+
+abi인 jSON을 어떻게 생성하는 지 궁금.... 원리 궁금..
 
 5일차 교육정리
 
