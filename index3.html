@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>DUR Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+  <!-- Bootstrap css-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <!-- bootstrap javascript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <link href="index.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div id="project_title">
+    <img id="logo" src="images/logo.jpg" />
+    Cell phone Registration
+    <hr>
+  </div>
+  <div class="main_box">
+    <div class="right_box col-md-6">
+      <div class="box_title">Cell Phone registration</div>
+      <div class="make_prescript">
+        <div class="form-group row">
+          <label for="myPhoneName" class="col-sm-3 col-form-label">myPhoneName</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control-plaintext" id="myPhoneName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="manufacturerName" class="col-sm-3 col-form-label">manufacturerName</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control-plaintext" id="manufacturerName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="serialNumber" class="col-sm-3 col-form-label">serialNumber</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control-plaintext" id="serialNumber">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="colorName" class="col-sm-3 col-form-label">colorName</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control-plaintext" id="colorName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="description" class="col-sm-3 col-form-label">description</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control-plaintext" id="description">
+          </div>
+        </div>        
+      </div>
+      <div class="button_group">
+        <button id="save_btn" type="button" class="btn btn-primary">Save</button>
+        <button id="new_btn" type="button" class="btn btn-default">Reset</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
